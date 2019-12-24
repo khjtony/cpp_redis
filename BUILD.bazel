@@ -26,15 +26,22 @@ cc_library(
         "includes/cpp_redis/builders/reply_builder.hpp",
         "includes/cpp_redis/builders/simple_string_builder.hpp",
         "includes/cpp_redis/core/client.hpp",
+        "includes/cpp_redis/core/types.hpp",
         "includes/cpp_redis/core/reply.hpp",
         "includes/cpp_redis/core/sentinel.hpp",
         "includes/cpp_redis/core/subscriber.hpp",
+        "includes/cpp_redis/core/consumer.hpp",
         "includes/cpp_redis/cpp_redis",
         "includes/cpp_redis/helpers/variadic_template.hpp",
         "includes/cpp_redis/impl/client.ipp",
+        "includes/cpp_redis/impl/types.hpp",
         "includes/cpp_redis/misc/error.hpp",
         "includes/cpp_redis/misc/logger.hpp",
         "includes/cpp_redis/misc/macro.hpp",
+        "includes/cpp_redis/misc/optional.hpp",
+        "includes/cpp_redis/misc/convert.hpp",
+        "includes/cpp_redis/misc/deprecated.hpp",
+        "includes/cpp_redis/misc/dispatch_queue.hpp",
         "includes/cpp_redis/network/redis_connection.hpp",
         "includes/cpp_redis/network/tcp_client.hpp",
         "includes/cpp_redis/network/tcp_client_iface.hpp",
@@ -46,7 +53,8 @@ cc_library(
 
 cc_binary(
     name = "example_cpp_redis_subscriber",
-    srcs = ["examples/cpp_redis_subscriber.cpp"],
+    srcs = ["examples/cpp_redis_subscriber.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
@@ -54,7 +62,8 @@ cc_binary(
 
 cc_binary(
     name = "example_cpp_redis_kill",
-    srcs = ["examples/cpp_redis_kill.cpp"],
+    srcs = ["examples/cpp_redis_kill.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
@@ -62,7 +71,8 @@ cc_binary(
 
 cc_binary(
     name = "example_cpp_redis_client",
-    srcs = ["examples/cpp_redis_client.cpp"],
+    srcs = ["examples/cpp_redis_client.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
@@ -70,7 +80,8 @@ cc_binary(
 
 cc_binary(
     name = "example_cpp_redis_logger",
-    srcs = ["examples/cpp_redis_logger.cpp"],
+    srcs = ["examples/cpp_redis_logger.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
@@ -78,7 +89,8 @@ cc_binary(
 
 cc_binary(
     name = "example_cpp_redis_future_client",
-    srcs = ["examples/cpp_redis_future_client.cpp"],
+    srcs = ["examples/cpp_redis_future_client.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
@@ -86,7 +98,8 @@ cc_binary(
 
 cc_binary(
     name = "example_cpp_redis_high_availability_client",
-    srcs = ["examples/cpp_redis_high_availability_client.cpp"],
+    srcs = ["examples/cpp_redis_high_availability_client.cpp",
+            "examples/winsock_initializer.h"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
     deps = ["cpp_redis"],
